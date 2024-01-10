@@ -19,18 +19,21 @@ def calculate(mass1,mass2,vo1,vo2):
 
         # AISLAR V1
         # v1 = (m2*m1*vo1 + (m2**2)*vo2 - m2*vo2 - m1*vo1) / m2*m1 - m1
-        v1 = (mass2*mass1*vo1 + (mass2**2)*vo2 - mass2*vo2 - mass1*vo1) / (mass2*mass1 - mass1)
+        "v1 = (mass2*mass1*vo1 + (mass2**2)*vo2 - mass2*vo2 - mass1*vo1) / (mass2*mass1 - mass1)"
+        v1 = (((mass1 - mass2) / (mass1 + mass2)) * vo1) + (((2*mass2) / (mass1 + mass2)) * vo2)
         print(f"v1: {v1}")
 
 
         # AISLAR V2
         # v2 = (m1*vo1 + m2*vo2 - m1*v1) / m2
-        v2 = (mass1*vo1 + mass2*vo2 - mass1*v1) / mass2
+        "v2 = (mass1*vo1 + mass2*vo2 - mass1*v1) / mass2"
+        v2 = (((2*mass1) / (mass1 + mass2)) * vo1) + (((mass2 - mass1) / (mass1 + mass2)) * vo2)
         print(f"v2: {v2}")
         
     except:
         v1 = 0
-        v2 = (mass1*vo1 + mass2*vo2 - mass1*v1) / mass2
+        "v2 = (mass1*vo1 + mass2*vo2 - mass1*v1) / mass2"
+        v2 = (((2*mass1) / (mass1 + mass2)) * vo1) + (((mass2 - mass1) / (mass1 + mass2)) * vo2)
         print(f"v1: {v1}")
         print(f"v2: {v2}")
 
