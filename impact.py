@@ -16,12 +16,24 @@ def final_vel(mass1,mass2,vo1,vo2):
     # m1*(vo1**2) + m2*(vo2**2) = m1*(v1**2) + m2*(v2**2)
 
     # bucle --> cada iteración --> calcular velocidades + invertir signo v2 + sumar al contador de impactos
+    impact_counter = 1
     
     v1 = (((mass1 - mass2) / (mass1 + mass2)) * vo1) + (((2*mass2) / (mass1 + mass2)) * vo2)
     print(f"v1: {v1}")
 
     v2 = (((2*mass1) / (mass1 + mass2)) * vo1) + (((mass2 - mass1) / (mass1 + mass2)) * vo2)
     print(f"v2: {v2}")
+
+    while v2 < 0 or v2 > v1:
+        v2 = v2 * -1
+        v1 = (((mass1 - mass2) / (mass1 + mass2)) * v1) + (((2*mass2) / (mass1 + mass2)) * v2)
+        print(f"v1: {v1}")
+        v2 = (((2*mass1) / (mass1 + mass2)) * v1) + (((mass2 - mass1) / (mass1 + mass2)) * v2)
+        print(f"v2: {v2}")
+        impact_counter += 1
+    
+    print(impact_counter)
+
 
 def main():
     Object1 = Object(1, -5) # mass, initial vel
