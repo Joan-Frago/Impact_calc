@@ -5,7 +5,7 @@ class Object:
         self.vo = vo # velocidad inicial
 
     def object_info(self):
-        return "\nMass: {}    Initial vel: {}   Initial pos: {}".format(self.mass, self.vo, self.xo)
+        return "\nMass: {}    Initial vel: {}   Initial pos: {}".format(self.mass, self.vo)
 
 def final_vel(mass1,mass2,vo1,vo2):
 
