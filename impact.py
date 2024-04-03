@@ -1,3 +1,4 @@
+import time
 class Object:
 
     def __init__(self, mass, vo):
@@ -25,6 +26,7 @@ def final_vel(mass1,mass2,vo1,vo2):
     print(f"v2: {v2}")
 
     while v2 < 0 or v2 > v1:
+        time.sleep(0.0001)
         print("\n")
         v2 = v2 * -1
         impact_counter += 1
@@ -38,7 +40,7 @@ def final_vel(mass1,mass2,vo1,vo2):
 
 
 def main():
-    Object1 = Object(100000000, -5) # mass, initial vel
+    Object1 = Object(100000000000, -5) # mass, initial vel
     Object2 = Object(1, 0) # mass, initial vel
     
     mass1 = Object1.mass
