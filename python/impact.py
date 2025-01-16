@@ -40,7 +40,7 @@ def final_vel(mass1,mass2,vo1,vo2):
 
 
 def main():
-    Object1 = Object(100000000000, -5) # mass, initial vel
+    Object1 = Object(1000000, -5) # mass, initial vel
     Object2 = Object(1, 0) # mass, initial vel
     
     mass1 = Object1.mass
