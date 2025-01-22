@@ -1,0 +1,6 @@
+.vscode/
+__pycache__/
+cpp/Impact
+cpp/a.out
+cpp/Impact.out
+python/gui/venv310/
