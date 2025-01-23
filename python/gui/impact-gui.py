@@ -13,7 +13,7 @@ WIDTH, HEIGHT = 800, 600
 
 window = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("Impact calculation")
-FPS = 60
+FPS = 120
 
 # colors
 WHITE = (255,255,255)
@@ -39,7 +39,7 @@ def draw_window(square_left,square_right):
 
 		# Collision counter
 		counter_text = f"{Square.collision_counter}"
-		Text.new(window, font, counter_text, (WIDTH // 2 - 80, 20), YELLOW)
+		Text.new(surface=window, font=font, text=counter_text, position=(WIDTH // 2, HEIGHT // 10), color=YELLOW)
 
 	except Exception as e:
 		print(f"Error in draw function: {e}")
@@ -49,7 +49,7 @@ def draw_window(square_left,square_right):
 
 if __name__ == "__main__":
 	right_square_mass = 100
-	right_square_vel = -2
+	right_square_vel = -1
 	right_square_size = 100
 
 	vertical_line_x_pos = WIDTH // 8
@@ -57,7 +57,7 @@ if __name__ == "__main__":
 	font = pygame.font.Font(None,50)
 
 	# Define initial squares
-	square_right = Square(position=WIDTH - WIDTH // 6,mass=right_square_mass,vel=right_square_vel,size=right_square_size,color=WHITE)
+	square_right = Square(position=WIDTH // 2,mass=right_square_mass,vel=right_square_vel,size=right_square_size,color=WHITE)
 	square_left = Square(position=vertical_line_x_pos + WIDTH // 10,mass=1,vel=0,size=50,color=WHITE)
 
 
