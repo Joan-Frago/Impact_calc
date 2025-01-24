@@ -1,6 +1,7 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+# include <stdlib.h>
 
 class Square {
   public:
@@ -30,7 +31,7 @@ void Welcome() {
 }
 
 int getChoice() {
-    int choice;
+  int choice;
   try {
     std::cout << "Choose an option:" << std::endl;
     std::cout << "  --> 1. Set mass" << std::endl;
@@ -38,12 +39,11 @@ int getChoice() {
     std::cout << "  --> 3. Exit program" << std::endl;
     std::cout << std::endl << "  --> ";
     std::cin >> choice;
-
-    return choice;
   }
   catch (const std::exception& e) {
     std::cout << "Exception " << e.what() << std::endl;
   }
+  return choice;
 }
 
 int ImpactCalc(int mass1,int mass2,int vo1,int vo2) {
@@ -96,32 +96,48 @@ int ImpactCalc(int mass1,int mass2,int vo1,int vo2) {
 }
 
 int main() {
+  system("clear");
   Welcome();
 
-  int choice = getChoice()
+  int choice = getChoice();
 
-  int num_of_impacts;
+  if (choice == 3) {
+    exit(1);
+  }
+  else if (choice == 1) {
+    system("clear");
+    float square_1_mass;
+    std::cout << std::endl << "New Mass of Square 1" << std::endl << "  --> ";
+    std::cin >> square_1_mass;
+    main();
+  }
+  else if (choice == 2) {
+    system("clear");
+    int num_of_impacts;
 
-  Square square_1;
-  float square_1_mass = 10;
-  float square_1_init_vel = -5;
+    Square square_1;
+    float square_1_mass;
+    float square_1_init_vel = -5;
+  
+    std::string square_1_info = square_1.SquareInfo(square_1_mass,square_1_init_vel);
+  
+    Square square_2;
+    float square_2_mass = 1;
+    float square_2_init_vel = 0;
+  
+    std::string square_2_info = square_2.SquareInfo(square_2_mass,square_2_init_vel);
+  
+    std::cout << "Square 1 Info:" << square_1_info << std::endl;
+    std::cout << "Square 2 Info:" << square_2_info << std::endl;
+  
+    num_of_impacts = ImpactCalc(square_1_mass,square_2_mass,square_1_init_vel,square_2_init_vel);
+  
+    std::cout << std::endl;
+    std::cout << "Total numbers of impacts:";
+    std::cout << std::endl << "  --> " << num_of_impacts << std::endl;
+  }
 
-  std::string square_1_info = square_1.SquareInfo(square_1_mass,square_1_init_vel);
-
-  Square square_2;
-  float square_2_mass = 1;
-  float square_2_init_vel = 0;
-
-  std::string square_2_info = square_2.SquareInfo(square_2_mass,square_2_init_vel);
-
-  std::cout << "Square 1 Info:" << square_1_info << std::endl;
-  std::cout << "Square 2 Info:" << square_2_info << std::endl;
-
-  num_of_impacts = ImpactCalc(square_1_mass,square_2_mass,square_1_init_vel,square_2_init_vel);
-
-  std::cout << std::endl;
-  std::cout << "Total numbers of impacts:";
-  std::cout << std::endl << "  --> " << num_of_impacts << std::endl;
+  
 
   return 0;
 }
